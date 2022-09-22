@@ -1,0 +1,160 @@
+Database name :- pgrms
+
+
+// By mahendra
+CREATE TABLE users (
+  `user_id` INT NOT NULL AUTO_INCREMENT,
+  `user_name` VARCHAR(60) NULL,
+  `user_mobile` bigint(12) NULL,
+  `user_email` VARCHAR(50) NULL,
+  `users_address` VARCHAR(150) NULL,
+  `user_city` VARCHAR(45) NULL,
+  `user_role` VARCHAR(20) NULL,
+  `user_password` VARCHAR(45) NULL,
+  PRIMARY KEY (`user_id`));
+
+
+select * from users;
+
+INSERT INTO users(user_name, user_mobile, user_email, users_address, user_city, user_role, user_password)
+ VALUES ("mahi", 9561051485, "telure123@gmail.com", "kannad sambhajinagar", "kannad", "OWNER", "Pass@123");
+
+INSERT INTO users(user_name, user_mobile, user_email, users_address, user_city, user_role, user_password)
+ VALUES ("rushi", 9108765432, "rushi@gmail.com", "dream nagar nashik", "nashik", "OWNER", "Test@123");
+ 
+ UPDATE users set user_id= 321 where user_id= 2;
+ 
+ INSERT INTO users(user_name, user_mobile, user_email, users_address, user_city, user_role, user_password) 
+ VALUES ("vaibhav", 1234567890, "vaibhav@gmail.com", "pishor", "sambhajinagar", "SEEKER", "Pass@123");
+
+select * from users;
+
+
+// By Pratik
+
+create table pg_houses(pg_id int auto_increment not null primary key, 
+		pg_name varchar(50) not null,
+		pg_address varchar(200) not null, 
+		pg_city varchar(20) not null, 
+		pg_description varchar(100) not null,
+		pg_house_type varchar(20) not null,
+		pg_status varchar(15) not null,
+		pg_rent_price int not null,
+		pg_photo LONGBLOB);
+		
+        
+	insert into pg_houses(pg_name, pg_address, pg_city, pg_description, pg_house_type, pg_status, pg_rent_price, pg_photo) values(
+		"pratik pg",
+		"Vishrantwadi", 
+		"pune",
+		"he ahe maz ghar rhaycha asel tr raha nahitr nka raha",
+		"1BHK",
+		"available",
+		12000,
+		null
+		);
+		
+			insert into pg_houses(pg_name, pg_address, pg_city, pg_description, pg_house_type, pg_status, pg_rent_price, pg_photo) values(
+		"mahendra pg",
+		"new sangvi", 
+		"pune",
+		"he ahe maz ghar rhaycha asel tr raha nahitr nka raha",
+		"2BHK",
+		"available",
+		15000,
+		null
+		);
+
+		
+		insert into pg_houses(pg_name, pg_address, pg_city, pg_description, pg_house_type, pg_status, pg_rent_price, pg_photo) values(
+		"jugal pg",
+		"rishi", 
+		"pune",
+		"gorakh rahto ithe",
+		"1RK",
+		"available",
+		15000,
+		null
+		);
+        
+        
+select * from pg_houses;
+
+
+
+
+
+
+create table requests(rq_id int auto_increment not null primary key, 
+		owner_id int not null,
+		seeker_id int not null, 
+		pg_house_id int not null
+		);
+		
+		
+insert into requests(owner_id, seeker_id, pg_house_id) values(1, 321, 2);
+insert into requests(owner_id, seeker_id, pg_house_id) values(321, 1, 4);
+insert into requests(owner_id, seeker_id, pg_house_id) values(322, 323, 3);
+insert into requests(owner_id, seeker_id, pg_house_id) values(323, 322, 5);
+		
+		select * from requests;
+create table wishlist(wl_id int auto_increment not null primary key, 
+		seeker_id int not null, 
+		pg_house_id int not null,
+		ctime timestamp
+		);
+		
+insert into wishlist(seeker_id, pg_house_id, ctime) values(323, 5, current_timestamp());
+insert into wishlist(seeker_id, pg_house_id, ctime) values(323, 4, current_timestamp());
+insert into wishlist(seeker_id, pg_house_id, ctime) values(321, 5, current_timestamp());
+insert into wishlist(seeker_id, pg_house_id, ctime) values(321, 3, current_timestamp());
+insert into wishlist(seeker_id, pg_house_id, ctime) values(322, 1, current_timestamp());
+
+
+select * from wishlist;
+		
+create table confirmed(cfm_id int auto_increment not null primary key, 
+		owner_id int not null,
+		seeker_id int not null, 
+		pg_house_id int not null
+		);
+		
+insert into confirmed(owner_id, seeker_id, pg_house_id) values(1, 321, 2);
+insert into confirmed(owner_id, seeker_id, pg_house_id) values(321, 1, 4);
+insert into confirmed(owner_id, seeker_id, pg_house_id) values(322, 323, 3);
+insert into confirmed(owner_id, seeker_id, pg_house_id) values(323, 322, 5);
+
+		select * from confirmed;
+
+
+create table reviews(rv_id int auto_increment not null primary key, 
+		owner_id int not null,
+		seeker_id int not null, 
+		pg_house_id int not null,
+		comments varchar(200) not null,
+		ctime timestamp
+		);
+		
+insert into reviews(owner_id, seeker_id, pg_house_id, comments, ctime) values(323, 322, 5, "This house is very big and beautiful", current_timestamp());
+insert into reviews(owner_id, seeker_id, pg_house_id, comments, ctime) values(321, 1, 2, "Very Good", current_timestamp());
+insert into reviews(owner_id, seeker_id, pg_house_id, comments, ctime) values(1, 321, 4, "Owner is good", current_timestamp());
+insert into reviews(owner_id, seeker_id, pg_house_id, comments, ctime) values(322, 323, 1, "Rent is very high and owner is also not good", current_timestamp());
+		select * from reviews;
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
